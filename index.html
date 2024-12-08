@@ -1,14 +1,57 @@
 <!doctype html>
-<html>
+<html lang="ko">
+
     <head>
+        <meta charset="UTF-8">
         <title>week2 website</title>
+        <style>
+            #top{
+				max-width: 800px;
+				padding: 20px;
+				margin: 10px auto;
+            }
+            #middle {
+                max-width: 800px;
+				background-color: #f0f0f0;
+				border-radius: 10px;
+                padding: 20px;
+				margin: 10px auto;
+				box-shadow : 0px 0px 7px 0px #9a9a9a ;
+            }
+			.string {
+				/* 수평 중앙 정렬하기 */
+				text-align: center;
+			}
+        </style>
     </head>
+
     <body>
-        <div id="test">
-            <form method="get">
-                <p>Hyper Test Markup Language의 약자로 웹페이지의 전체적인 구조 및 골격을 표현할 수 있는 언어는?</p>
-                <p><input type="text"></p>
+        <div id="top">
+            <h1 class="string">QUIZ</h1>
+        </div>
+        <div id="middle">
+            <form id="quiz_form">
+                <p class="string" id="question_no1">Hyper Test Markup Language의 약자로 웹페이지의 전체적인 구조 및 골격을 표현할 수 있는 언어는?</p>
+                <p class="string" id="user_answer_no1">정답 : <input type="text" name="user_answer_no1"> <input type="submit" name="submit_no1"></p>
             </form>
         </div>
     </body>
+    <script>
+        document.getElementById('quiz_form').onsubmit = function(e){
+			e.preventDefault();
+		
+            var user_answer_no1 = this.user_answer_no1.value.toUpperCase();
+            var real_answer_no = "HTML";
+			
+            if (real_answer_no == user_answer_no1){
+                alert("정답입니다!");
+            }else{
+                alert("틀렸습니다..");
+            }
+
+
+        }
+        //const answer_no1 = document.getElementById('answer_no1').value;
+
+    </script>
 </html>
