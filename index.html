@@ -5,53 +5,96 @@
         <meta charset="UTF-8">
         <title>week2 website</title>
         <style>
-            #top{
+            #head_div{
 				max-width: 800px;
-				padding: 20px;
-				margin: 10px auto;
+				min-width: 330px;
+				padding: 5px;
+				margin: 1px auto;
             }
-            #middle {
+            #body_div {
+                max-width: 830px;
+				min-width: 330px;
+                padding: 3px;
+				margin: 5px auto;
+            }
+			.quiz_form {
                 max-width: 800px;
 				background-color: #f0f0f0;
 				border-radius: 10px;
                 padding: 20px;
-				margin: 10px auto;
-				box-shadow : 0px 0px 7px 0px #9a9a9a ;
+				margin: 1px auto;
+				margin-bottom: 20px;
+				box-shadow : 0px 0px 7px 0px #9a9a9a;
             }
 			.string {
 				/* 수평 중앙 정렬하기 */
 				text-align: center;
 			}
+            .string_radio {
+                text-align: left;
+            }
+            hr {
+				height : 1.2px;
+				border : 0px;
+                background-color : #cccccc;
+            }
         </style>
     </head>
 
     <body>
-        <div id="top">
+        <div id="head_div">
             <h1 class="string">QUIZ</h1>
         </div>
-        <div id="middle">
-            <form id="quiz_form">
-                <p class="string" id="question_no1">Hyper Test Markup Language의 약자로 웹페이지의 전체적인 구조 및 골격을 표현할 수 있는 언어는?</p>
+        <div id="body_div">
+            <form class="quiz_form" id="quiz_no1_form">
+                <h4 class="string" id="question_no1">1. Hyper Test Markup Language의 약자로 웹페이지의 전체적인 구조 및 골격을 표현할 수 있는 언어는?</h4> <hr>
                 <p class="string" id="user_answer_no1">정답 : <input type="text" name="user_answer_no1"> <input type="submit" name="submit_no1"></p>
+            </form>
+            <form class="quiz_form" id="quiz_no2_form">
+                <h4 class="string" id="question_no2">2. 다음 중 옳지 않은 것은?</h4> <hr>
+                <p class="string_radio"><input type="radio" name="user_answer_no2" value="1">CSS는 Cascading Style Sheet의 약자로 웹페이지에 디자인(스타일)을 적용하는 시트 언어 입니다.</p>
+                <p class="string_radio"><input type="radio" name="user_answer_no2" value="2">CSS는 적용할 스타일이 상위요소에서 하위요소로 상속됩니다.</p>
+                <p class="string_radio"><input type="radio" name="user_answer_no2" value="3">JS는 JavaScript의 약자로 웹페이지의 동적인 기능을 구현하는 스크립트 언어입니다.</p>
+                <p class="string_radio"><input type="radio" name="user_answer_no2" value="4">JS는 무조건 HTML문서 내부에 작성해야하며, 외부 JS를 참조할 수 없습니다.</p>
+
+                <p class="string"><input type="submit" name="submit_no2"></p>
+
             </form>
         </div>
     </body>
+	
     <script>
-        document.getElementById('quiz_form').onsubmit = function(e){
+		const quiz2form = document.getElementById('quiz_no2_form');
+		quiz2form.style.display = 'none';
+
+        document.getElementById('quiz_no1_form').onsubmit = function(e){
 			e.preventDefault();
 		
             var user_answer_no1 = this.user_answer_no1.value.toUpperCase();
-            var real_answer_no = "HTML";
+            var real_answer_no1 = "HTML";
 			
-            if (real_answer_no == user_answer_no1){
-                alert("정답입니다!");
+            if (real_answer_no1 == user_answer_no1){
+				quiz2form.style.display = 'block';
+                alert("정답입니다! 다음 문제를 풀어보세요.");
             }else{
-                alert("틀렸습니다..");
+                alert("틀렸습니다. 다시 맞춰보세요!");
             }
 
+        }
+
+        document.getElementById('quiz_no2_form').onsubmit = function(e){
+			e.preventDefault();
+		
+            var user_answer_no2 = this.user_answer_no2.value;
+            var real_answer_no2 = "4";
+			
+            if (real_answer_no2 == user_answer_no2){
+                alert("정답입니다!");
+            }else{
+                alert("틀렸습니다. 다시 맞춰보세요!");
+            }
 
         }
-        //const answer_no1 = document.getElementById('answer_no1').value;
-
     </script>
+	
 </html>
