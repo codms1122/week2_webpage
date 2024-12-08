@@ -1,15 +1,16 @@
 <!doctype html>
 <html lang="ko">
-
-    <head>
+    
+    <!-- 제목 및 CSS 스타일 등 지정 --> 
+    <head> 
         <meta charset="UTF-8">
         <title>week2 website</title>
-        <style>
+        <style> /*CSS 코드 작성*/
             #head_div{
-				max-width: 800px;
-				min-width: 330px;
-				padding: 5px;
-				margin: 1px auto;
+				max-width: 800px; /*최대 넓이*/
+				min-width: 330px; /*최소 넓이*/
+				padding: 5px; /*영역 안쪽 여백*/
+				margin: 1px auto; /*영역 바깥 여백*/
             }
             #body_div {
                 max-width: 830px;
@@ -19,19 +20,18 @@
             }
 			.quiz_form {
                 max-width: 800px;
-				background-color: #f0f0f0;
-				border-radius: 10px;
+				background-color: #f0f0f0; /*바탕색*/
+				border-radius: 10px; /*모서리 둥글게*/
                 padding: 20px;
 				margin: 1px auto;
-				margin-bottom: 20px;
-				box-shadow : 0px 0px 7px 0px #9a9a9a;
+				margin-bottom: 20px; /*영역 바깥 여백 아래쪽*/
+				box-shadow : 0px 0px 7px 0px #9a9a9a; /*영역 그림자*/
             }
 			.string {
-				/* 수평 중앙 정렬하기 */
-				text-align: center;
+				text-align: center; /*수평기준 중앙 정렬*/
 			}
             .string_radio {
-                text-align: left;
+                text-align: left; /*수평기준 왼쪽 정렬*/
             }
             hr {
 				height : 1.2px;
@@ -41,6 +41,7 @@
         </style>
     </head>
 
+    <!-- 입력받을 form 영역 작성 --> 
     <body>
         <div id="head_div">
             <h1 class="string">QUIZ</h1>
@@ -63,25 +64,29 @@
         </div>
     </body>
 	
+    <!-- 입력받은 데이터 정답 확인 스크립트 --> 
     <script>
+        //처음에 2번 문제가 안보이도록 설정
 		const quiz2form = document.getElementById('quiz_no2_form');
 		quiz2form.style.display = 'none';
-
+        
+        //1번 문제 form 가져와서 정답 확인
         document.getElementById('quiz_no1_form').onsubmit = function(e){
 			e.preventDefault();
 		
-            var user_answer_no1 = this.user_answer_no1.value.toUpperCase();
+            var user_answer_no1 = this.user_answer_no1.value.toUpperCase(); 
             var real_answer_no1 = "HTML";
 			
             if (real_answer_no1 == user_answer_no1){
-				quiz2form.style.display = 'block';
+				quiz2form.style.display = 'block'; //1번 맞추면 2번 문제 보이게 설정
                 alert("정답입니다! 다음 문제를 풀어보세요.");
             }else{
                 alert("틀렸습니다. 다시 맞춰보세요!");
             }
 
         }
-
+        
+        //2번 문제 from 가져와서 정답 확인
         document.getElementById('quiz_no2_form').onsubmit = function(e){
 			e.preventDefault();
 		
